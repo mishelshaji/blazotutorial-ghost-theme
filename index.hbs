@@ -1,0 +1,27 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+{{!-- Class for <body> --}}
+{{#contentFor "special_body_class"}}bg-gray-100{{/contentFor}}
+
+{{!-- Header ./partials/site-header.hbs --}}
+{{> "site-header"}}
+
+<div class="section blog-posts kusi-blog">
+    <div class="section--inner w-full mx-auto max-w-3xl px-6">
+
+        {{!-- Post Card - ./partials/post-card.hbs --}}
+        {{#foreach posts visibility="all"}}
+            {{^has tag="docs"}}
+                {{> "post-card"}}
+            {{/has}}
+        {{/foreach}}
+
+    </div>
+
+    {{pagination}}
+</div>
+
+{{!-- Footer ./partials/site-footer.hbs --}}
+{{> "site-footer"}}
